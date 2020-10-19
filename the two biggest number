@@ -1,0 +1,55 @@
+// 最大的两个数字.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+#include <iostream>
+using  namespace std;
+int main()
+{
+	int i;
+	int max1=0, max2=0;
+	int stage=0;
+	cout << "please enter ints to compare:";
+	while (1)
+	{
+		
+		cin >> i;
+		if (i == 0)//输入零表示退出
+			break;
+		if (stage == 0)//第0阶段输入第一个数字时候
+		{
+			max1 = i;
+			max2 = i;
+			stage = 1;
+		}
+		else if(stage == 1)//第一阶段输入了两个数字，大的为max1小的max2
+		 {
+			
+			if (i > max1)
+			{
+				max1 = i;
+				max2 = max1;
+				stage = 2;
+
+			}
+			else
+			{
+				max2 = i;
+				stage = 2;
+			}
+		}
+		else if(stage==2)//阶段二已经输入了三个及以上数字。
+		{
+			if (i > max1)//大于max1，max1赋值i
+			{
+				max2 = max1;
+				max1 = i;
+
+			}
+			else if(i>max2)//小于max1但大于max2，max2赋值i
+			{
+				max2 = i;
+
+			}
+		}
+	}
+	cout << "max1=" << max1 << "        max2=" << max2;//输出最大以及第二大的数字
+}
+
